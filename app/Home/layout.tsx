@@ -24,8 +24,8 @@ export default function HomeLayout({
                 <div className='flex p-10 items-center justify-between font-bold pb-40'>
                     <div className='flex items-center gap-3'>
                         <Link href="/" className='flex items-center '>
-                            <Image src="/logo.png" alt="Logo" width={35} height={35} className='mr-[-2px]' />
-                            <h1 className='text-xl'>areer-Aid</h1>
+                            <h1 className='text-6xl text-red-500'>M</h1>
+                            <h1 className='text-xl'>entorify</h1>
                         </Link>
                     </div>
 
@@ -41,19 +41,10 @@ export default function HomeLayout({
                                 <Link href="/Home" className={`${styles.a}`}>Home</Link>
                             </li>
                             <li>
-                                <Link href="/Imagine" className={`${styles.a}`}>Imagine</Link>
-                            </li>
-                            <li>
                                 <Link href="/Chat" className={`${styles.a}`}>Council</Link>
-                            </li>
-                            <li>
-                                <Link href="https://kanugurajesh.github.io" className={`${styles.a}`}>Blog</Link>
                             </li>
                         </ul>
                         <UserButton />
-                        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
-                            <Link href="/Contact">Contact Us</Link>
-                        </button>
                     </div>
                 </div>
             </nav>

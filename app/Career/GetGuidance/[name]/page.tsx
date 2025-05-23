@@ -48,7 +48,7 @@ export default function Page({ params }: { params: { name: string } }) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                userPrompt: `can you tell me what are the capabilities I need to start a career in ${name} and what are the career options available in ${name}`,
+                userPrompt: `can you give me a roadmap to start a career in ${name} and what are the career options available in ${name}`,
             }),
         });
 
@@ -85,7 +85,7 @@ export default function Page({ params }: { params: { name: string } }) {
                 </Card>
                 <Button onClick={() => {
                     onSubmit();
-                    getImage(name);
+                    // getImage(name);
                 }}>Get Details</Button>
             </div>
         </div>

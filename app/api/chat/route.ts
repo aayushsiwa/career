@@ -8,8 +8,8 @@ export async function POST(req: NextRequest) {
   const reqBody = await req.json();
   const { userPrompt } = reqBody;
   const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY as string);
-  const model = genAI.getGenerativeModel({ model: "gemini-pro", generationConfig: { maxOutputTokens: 400 }});
-
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
+  console.log("userPrompt", userPrompt);
   try {
     const result = await model.generateContent(userPrompt);
     const response = await result.response;
