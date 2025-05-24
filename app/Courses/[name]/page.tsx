@@ -84,7 +84,7 @@ export default function Page({ params }: { params: { name: string } }) {
         if (inputRef?.current && !inputLookMultiplier) {
             setInputLookMultiplier(inputRef.current.offsetWidth / 100);
         }
-    }, [inputRef]);
+    }, [inputLookMultiplier, inputRef]);
 
     const { rive: riveInstance, RiveComponent }: RiveState = useRive({
         src: "/bear.riv",
@@ -262,6 +262,7 @@ export default function Page({ params }: { params: { name: string } }) {
                                         src="/icons/goldmedal.svg"
                                         width={100}
                                         height={100}
+                                        alt="Gold Medal"
                                     />
                                 </div>
                             </>
@@ -280,6 +281,7 @@ export default function Page({ params }: { params: { name: string } }) {
                                         src="/icons/silvermedal.svg"
                                         width={100}
                                         height={100}
+                                        alt="Silver Medal"
                                     />
                                 </div>
                             </>
@@ -298,6 +300,7 @@ export default function Page({ params }: { params: { name: string } }) {
                                         src="/icons/bronzemedal.svg"
                                         width={100}
                                         height={100}
+                                        alt="Bronze Medal"
                                     />
                                 </div>
                             </>
