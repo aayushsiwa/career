@@ -1,30 +1,35 @@
 "use client";
 
-import { UserButton } from "@clerk/nextjs";
-import Image from "next/image";
-import styles from "@/styles/Root.module.css";
-import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
+import { UserButton } from "@clerk/nextjs";
+import styles from "@/styles/Root.module.css";
 
-export default function HomeLayout({
+export default function RootWrapper({
     children,
 }: {
     children: React.ReactNode;
 }) {
+    const pathname = usePathname();
     const [showMenu, setShowMenu] = useState(false);
+    const BLOG_URL = process.env.NEXT_PUBLIC_BLOG_URL || "";
 
-    const toggleMenu = () => {
-        setShowMenu(!showMenu);
-    };
+    // Hide nav and wrapper for homepage
+    if (pathname === "/") {
+        return <>{children}</>;
+    }
+
+    const toggleMenu = () => setShowMenu(!showMenu);
 
     return (
         <div className={`${showMenu ? "overflow-hidden h-screen" : ""}`}>
             <nav className="relative">
-                <div className="flex p-10 items-center justify-between font-bold">
+                <div className="flex p-10 items-center justify-between font-bold pb-40">
                     <div className="flex items-center gap-3">
-                        <Link href="/" className="flex items-center ">
-                            <h1 className="text-6xl text-red-500">M</h1>
-                            <h1 className="text-xl">entorify</h1>
+                        <Link href="/Home" className="flex items-center">
+                            <h1 className="text-3xl text-red-500">H</h1>
+                            <h1 className="text-xl">ustleHop</h1>
                         </Link>
                     </div>
 
@@ -52,22 +57,35 @@ export default function HomeLayout({
                     >
                         <ul className="flex gap-5">
                             <li>
-                                <Link href="/Home" className={`${styles.a}`}>
-                                    Home
+                                <Link href="/Career" className={styles.a}>
+                                    Career
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/Chat" className={`${styles.a}`}>
-                                    Council
+                                <Link href="/Chat" className={styles.a}>
+                                    Chat
                                 </Link>
+                            </li>
+                            <li>
+                                {BLOG_URL && (
+                                    <Link
+                                        href={`${BLOG_URL}`}
+                                        className={styles.a}
+                                    >
+                                        Blog
+                                    </Link>
+                                )}
                             </li>
                         </ul>
                         <UserButton />
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <Link href="/Contact">Contact Us</Link>
+                        </button>
                     </div>
                 </div>
             </nav>
-            {/* {window.innerWidth > 750 || !showMenu ? children : ''} */}
-            {!showMenu ? children : ""}
+
+            {!showMenu ? children : null}
         </div>
     );
 }
